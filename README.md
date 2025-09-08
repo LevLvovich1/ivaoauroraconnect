@@ -1,5 +1,5 @@
 # IvaoAuroraConnect Library #
-
+https://pypi.org/project/ivaoauroraconnect/
 ## What is this? ##
 Allows to get data from IVAO Aurora started on user`s computer
 
@@ -71,4 +71,5 @@ command(cmnd='COMMAND', points='IF NEEDED')
 | INTERCOMANSWER      | Answer incoming intercom call                             | -                                                                                                                                                                                                          |
 | INTERCOMREJECT      | Reject incoming intercom call                             | -                                                                                                                                                                                                          |
 | INTERCOMPHONESTATUS | Returns intercom status                                   | PHONE_RECEIVING<br>PHONE_PERFORMING<br>PHONE_ONGOING<br>PHONE_RESET                                                                                                                                        |
+
 | INTERCOMCALLSTATUS  | Returns incoming call status                              | status:<br>CALL_RESULT_OUT_OK<br>CALL_RESULT_IN_OK<br>CALL_RESULT_IN_MISSED<br>CALL_RESULT_OUT_FAIL<br>CALL_NIL<br>reject_reason:<br>CALL_CALLEE_NOT_CONNECTED<br>CALL_CALLEE_REJECT<br>CALL_SERVER_REJECT |
