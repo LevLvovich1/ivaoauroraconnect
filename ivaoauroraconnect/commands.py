@@ -7,7 +7,8 @@ PORT = 1130
 
 class Error(Exception):
     pass
-
+class ConnectionError(Exception):
+    pass
 
 def command(cmnd: str, points=None, s=None) -> str:
     if s != None:
@@ -50,6 +51,7 @@ def command(cmnd: str, points=None, s=None) -> str:
                 else:
                     return ""
             except ConnectionRefusedError as e:
-                raise Error("Aurora not responding")
+                raise ConnectionError("Aurora not responding")
             except Exception as e:
                 raise Error(e)
+
