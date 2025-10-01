@@ -819,3 +819,31 @@ def METAR() -> str or None:
 #     print("Was selected", trpos[15])
 #     print("Current gate", trpos[16])
 #     print("Voice", trpos[17])
+
+def CONN() -> str or None:
+    """Returns metar for ARPT."""
+    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+        try:
+            s.connect((HOST, PORT))
+            command = f"#CONN\n"
+            s.sendall(command.encode("ascii"))
+            response = s.recv(1024)
+            response_str = response.decode("ascii")
+            response_str = response_str.strip()
+            if response_str.startswith(f"#CONN;"):
+                response_str = response_str[len(f"#CONN;") :]
+            else:
+                raise Error("Something went wrong.")
+            parts = response_str.split(";")
+            values = parts[0:]
+            values_list = [value.strip() for value in values]
+            if values_list[0] != "":
+                return values_list[0]
+            else:
+                return None
+        except ConnectionRefusedError:
+            raise Error(
+                "Aurora not responding. Make sure Aurora allow 3rd party software."
+            )
+        except Exception as e:
+            raise Error(e)
